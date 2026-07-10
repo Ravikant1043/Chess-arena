@@ -34,13 +34,7 @@ strong, server-authoritative backend.
 | Real-time | STOMP over WebSocket (+ SockJS fallback) |
 | Auth | Spring Security + JWT (jjwt) |
 | Database | H2 (file mode) — swappable for MySQL/PostgreSQL |
-| Presence | `PresenceStore` interface: in-memory by default, **Redis** under the `redis` profile |
 | Frontend | Plain HTML / CSS / vanilla JS (no build step) |
-
-> **Docker / Redis are not required to run.** Presence defaults to an in-memory store; the
-> Redis implementation is code-complete and activates via the `redis` profile. See
-> [docs/05-redis.md](docs/05-redis.md).
-
 ## Quick start
 
 ```bash
@@ -72,7 +66,7 @@ chess-arena/
 │   ├── engine/        pure-Java chess engine (core / pieces / game)
 │   ├── auth/          JWT auth (service, filter, controller)
 │   ├── user/          User entity, repository, service, REST
-│   ├── presence/      PresenceStore (in-memory + Redis impls)
+│   ├── presence/      PresenceStore (in-memory )
 │   ├── matchmaking/   Challenge + MatchmakingService
 │   ├── game/          GameSession, GameService, GameRecord
 │   ├── ws/            STOMP controllers, broadcasters, messages
@@ -92,7 +86,6 @@ Design docs were written alongside the code and live in [`docs/`](docs/):
 | [02-chess-engine.md](docs/02-chess-engine.md) | Engine design & rule coverage |
 | [03-authentication.md](docs/03-authentication.md) | JWT & security |
 | [04-persistence.md](docs/04-persistence.md) | Entities, repositories, scoring |
-| [05-redis.md](docs/05-redis.md) | Presence abstraction & Redis |
 | [06-websocket-protocol.md](docs/06-websocket-protocol.md) | Every STOMP destination & message |
 | [07-matchmaking-and-game-flow.md](docs/07-matchmaking-and-game-flow.md) | Challenge → accept → game lifecycle |
 | [08-frontend.md](docs/08-frontend.md) | UI structure & board interaction |
